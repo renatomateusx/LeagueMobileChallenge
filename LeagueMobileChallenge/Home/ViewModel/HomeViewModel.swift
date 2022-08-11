@@ -16,14 +16,19 @@ protocol HomeViewModelDelegate: AnyObject {
 class HomeViewModel {
     
     // MARK: - Private Properties
+    let service: APIControllerProtocol
     var delegate: HomeViewModelDelegate?
     var users = Users()
     var posts = Posts()
+    
     // MARK: - Inits
     
+    init(with service: APIControllerProtocol) {
+        self.service = service
+    }
     
     func fetchData() {
-        APIController.shared.fetchUserToken(userName: APIController.user, password: APIController.password) { token, error in
+        service.fetchUserToken(userName: Constants.user, password: Constants.password) { token, error in
             if let error = error {
                 // PRINT ERROR
                 print(error)
@@ -31,27 +36,25 @@ class HomeViewModel {
                 return
             }
     
-            APIController.shared.fetchUsers { usersData, error in
+            self.service.fetchUsers { users, error in
                 if let error = error {
                     print(error)
                     self.delegate?.onFailureFetchingWeather(error: error)
                     return
                 }
                 
-                if let usersData = usersData as? Data,
-                    let users: Users = try? JSONDecoder().decode(Users.self, from: usersData) {
-                    self.users = users
+                if let usersData = users {
+                    self.users = usersData
                     
-                    APIController.shared.fetchPosts { postsData, error in
+                    self.service.fetchPosts { postsData, error in
                         if let error = error {
                             print(error)
                             self.delegate?.onFailureFetchingWeather(error: error)
                             return
                         }
-                        if let postsData = postsData as? Data,
-                            let posts: Posts = try? JSONDecoder().decode(Posts.self, from: postsData) {
-                            self.posts = posts
-                            self.delegate?.onSuccessFetchingWeather(users: users, posts: posts)
+                        if let postsData = postsData {
+                            self.posts = postsData
+                            self.delegate?.onSuccessFetchingWeather(users: self.users, posts: self.posts)
                         }
                     }
                 }

@@ -14,6 +14,11 @@
 		30C28BA428A5072E009CE751 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BA328A5072E009CE751 /* PostTableViewCell.swift */; };
 		30C28BAE28A5308E009CE751 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BAD28A5308E009CE751 /* HomeViewModel.swift */; };
 		30C28BB428A5331B009CE751 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BB328A5331B009CE751 /* UIViewController+Extensions.swift */; };
+		30C28BB828A5900E009CE751 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BB728A5900E009CE751 /* APIEndpoint.swift */; };
+		30C28BBB28A59057009CE751 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BBA28A59057009CE751 /* Constants.swift */; };
+		30C28BBD28A5921B009CE751 /* APIControllerMockSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BBC28A5921B009CE751 /* APIControllerMockSuccess.swift */; };
+		30C28BBF28A593D5009CE751 /* APIControllerMockFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BBE28A593D5009CE751 /* APIControllerMockFailure.swift */; };
+		30C28BC228A5944B009CE751 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BC128A5944B009CE751 /* HomeViewModelTests.swift */; };
 		5BD7C54FA60BB7570A693C71 /* Pods_LeagueMobileChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09417A2435F74B6BBD872D0B /* Pods_LeagueMobileChallengeUITests.framework */; };
 		B6AC694F21E6578D0094A9B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC694E21E6578D0094A9B1 /* AppDelegate.swift */; };
 		B6AC695421E6578D0094A9B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6AC695221E6578D0094A9B1 /* Main.storyboard */; };
@@ -53,6 +58,11 @@
 		30C28BA328A5072E009CE751 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		30C28BAD28A5308E009CE751 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		30C28BB328A5331B009CE751 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		30C28BB728A5900E009CE751 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		30C28BBA28A59057009CE751 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		30C28BBC28A5921B009CE751 /* APIControllerMockSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIControllerMockSuccess.swift; sourceTree = "<group>"; };
+		30C28BBE28A593D5009CE751 /* APIControllerMockFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIControllerMockFailure.swift; sourceTree = "<group>"; };
+		30C28BC128A5944B009CE751 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		71E420C2560A70D44F192FFD /* Pods-LeagueMobileChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeagueMobileChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeagueMobileChallenge/Pods-LeagueMobileChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		9E973EA07DC680BB29B1002A /* Pods_LeagueMobileChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeagueMobileChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE17B652112E8ACDBCA2682C /* Pods-LeagueMobileChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeagueMobileChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeagueMobileChallengeUITests/Pods-LeagueMobileChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				B6AC69A121ECEC740094A9B1 /* APIController.swift */,
+				30C28BB728A5900E009CE751 /* APIEndpoint.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -192,6 +203,32 @@
 				30C28BB328A5331B009CE751 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		30C28BB928A5904C009CE751 /* Fundamentals */ = {
+			isa = PBXGroup;
+			children = (
+				30C28BBA28A59057009CE751 /* Constants.swift */,
+			);
+			path = Fundamentals;
+			sourceTree = "<group>";
+		};
+		30C28BC328A596AB009CE751 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				30C28BC128A5944B009CE751 /* HomeViewModelTests.swift */,
+				30C28BC428A596B5009CE751 /* Mock */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		30C28BC428A596B5009CE751 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				30C28BBC28A5921B009CE751 /* APIControllerMockSuccess.swift */,
+				30C28BBE28A593D5009CE751 /* APIControllerMockFailure.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		40816A92C89E63A0A9F413CC /* Frameworks */ = {
@@ -229,6 +266,7 @@
 		B6AC694D21E6578D0094A9B1 /* LeagueMobileChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				30C28BB928A5904C009CE751 /* Fundamentals */,
 				30C28BA528A5301C009CE751 /* Base.Iproj */,
 				30C28BA628A53030009CE751 /* Resources */,
 				30C28BA728A53047009CE751 /* Home */,
@@ -241,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				B6AC696621E6578F0094A9B1 /* LeagueMobileChallengeTests.swift */,
+				30C28BC328A596AB009CE751 /* Home */,
 				B6AC696821E6578F0094A9B1 /* Info.plist */,
 			);
 			path = LeagueMobileChallengeTests;
@@ -285,6 +324,7 @@
 				B6AC695E21E6578F0094A9B1 /* Sources */,
 				B6AC695F21E6578F0094A9B1 /* Frameworks */,
 				B6AC696021E6578F0094A9B1 /* Resources */,
+				20087A3A99D6D1BD838AE2BE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -408,6 +448,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		20087A3A99D6D1BD838AE2BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LeagueMobileChallengeTests/Pods-LeagueMobileChallengeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LeagueMobileChallengeTests/Pods-LeagueMobileChallengeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LeagueMobileChallengeTests/Pods-LeagueMobileChallengeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BDA280367187E8C9B777DA13 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,22 +515,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LeagueMobileChallenge/Pods-LeagueMobileChallenge-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-LeagueMobileChallenge/Pods-LeagueMobileChallenge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-LeagueMobileChallenge/Pods-LeagueMobileChallenge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeagueMobileChallenge/Pods-LeagueMobileChallenge-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LeagueMobileChallenge/Pods-LeagueMobileChallenge-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -484,9 +534,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				30C28BA028A50166009CE751 /* Users.swift in Sources */,
+				30C28BB828A5900E009CE751 /* APIEndpoint.swift in Sources */,
 				30C28B9D28A4FF24009CE751 /* HomeTableViewController.swift in Sources */,
 				30C28BAE28A5308E009CE751 /* HomeViewModel.swift in Sources */,
 				30C28BA228A50370009CE751 /* Posts.swift in Sources */,
+				30C28BBB28A59057009CE751 /* Constants.swift in Sources */,
 				30C28BB428A5331B009CE751 /* UIViewController+Extensions.swift in Sources */,
 				B6AC69A221ECEC740094A9B1 /* APIController.swift in Sources */,
 				B6AC694F21E6578D0094A9B1 /* AppDelegate.swift in Sources */,
@@ -498,7 +550,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C28BBD28A5921B009CE751 /* APIControllerMockSuccess.swift in Sources */,
 				B6AC696721E6578F0094A9B1 /* LeagueMobileChallengeTests.swift in Sources */,
+				30C28BBF28A593D5009CE751 /* APIControllerMockFailure.swift in Sources */,
+				30C28BC228A5944B009CE751 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,11 +13,9 @@ class HomeTableViewController: UITableViewController {
     // MARK: Outlets
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    
-    var apiController: APIController?
     var posts = Posts()
     var users = Users()
-    let viewModel = HomeViewModel()
+    var viewModel = HomeViewModel(with: APIController.shared)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +69,10 @@ extension HomeTableViewController {
 
 extension HomeTableViewController {
     private func reloadTableViewData() {
+        self.loadingIndicator.stopAnimating()
+        self.loadingIndicator.removeFromSuperview()
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            self.loadingIndicator.stopAnimating()
         }
     }
 }

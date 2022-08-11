@@ -7,28 +7,42 @@
 //
 
 import XCTest
+import UIKit
+import SnapshotTesting
+
 @testable import LeagueMobileChallenge
 
 class LeagueMobileChallengeTests: XCTestCase {
-
+    
+    var viewController: HomeTableViewController!
+    var window: UIWindow!
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        
+        let bundle = Bundle.main
+        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+        viewController = storyboard.instantiateViewController(withIdentifier: "HomeTableViewController") as? HomeTableViewController
+        viewController.viewModel = HomeViewModel(with: APIControllerMockSuccess())
+        viewController.loadViewIfNeeded()
+        
+        window = UIApplication.shared.windows.first
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
     }
-
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testInitialState() {
+        sleep(3)
+        XCTAssertEqual(viewController.posts.count, 1)
+        XCTAssertEqual(viewController.title, "Posts")
+        
+        sleep(3)
+        XCTAssertFalse(viewController.loadingIndicator.isAnimating)
+        assertSnapshot(matching: viewController, as: .image(precision: 0.99))
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }
