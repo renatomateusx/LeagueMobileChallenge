@@ -1,0 +1,6 @@
+framework module Pods_LeagueMobileChallengeUITests {
+  umbrella header "Pods-LeagueMobileChallengeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
