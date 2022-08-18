@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  LeagueMobileChallenge
+
+  Created by Renato Mateus on 17/08/22.
+  Copyright © 2022 Kelvin Lau. All rights reserved.
+*/
+
+"home_title" = "Posts";
+"oops_title" = "Oops!";
+"bad_cell_couldnt_cast"= " Bad Cell - Could Not Cast! ";

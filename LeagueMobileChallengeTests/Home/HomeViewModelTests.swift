@@ -26,8 +26,12 @@ class HomeViewModelTests: XCTestCase {
     
     func testFetchIfSuccess() {
         viewModel = HomeViewModel(with: serviceMockSuccess)
-        viewModel?.delegate = self
-        let expectation = XCTestExpectation.init(description: "Digio Data")
+        viewModel.posts.bind { [unowned self] (_) in
+            if let posts = viewModel.posts.value, let users = viewModel.users.value {
+                successCompletion(users, posts)
+            }
+        }
+        let expectation = XCTestExpectation.init(description: "Data")
         self.successCompletion = { (users, posts) in
             if let posts = posts {
                 XCTAssertNotNil(posts, "No data was downloaded.")
@@ -42,7 +46,11 @@ class HomeViewModelTests: XCTestCase {
     
     func testFetchPostsIfFailure() {
         viewModel = HomeViewModel(with: serviceMockFailure)
-        viewModel.delegate = self
+        viewModel.error.bind { [unowned self] (_) in
+            if let error = viewModel.error.value {
+                failureCompletion(nil, error)
+            }
+        }
         let expectation = XCTestExpectation.init(description: "Error")
         self.failureCompletion = { (nil, error) in
             if let error = error {
@@ -55,15 +63,5 @@ class HomeViewModelTests: XCTestCase {
         }
         viewModel.fetchData()
         wait(for: [expectation], timeout: 60.0)
-    }
-}
-
-extension HomeViewModelTests: HomeViewModelDelegate {
-    func onSuccessFetchingWeather(users: Users, posts: Posts) {
-        successCompletion(users, posts)
-    }
-    
-    func onFailureFetchingWeather(error: Error) {
-        failureCompletion(nil, error)
     }
 }

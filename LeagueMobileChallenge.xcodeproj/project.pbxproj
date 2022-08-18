@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0A864FF656992546AD7C544F /* Pods_LeagueMobileChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E973EA07DC680BB29B1002A /* Pods_LeagueMobileChallengeTests.framework */; };
+		30C1646328ADB4DB00923997 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C1646228ADB4DB00923997 /* String+Extensions.swift */; };
+		30C1646528ADB4E600923997 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C1646428ADB4E600923997 /* Localizable.swift */; };
+		30C1646728ADB50A00923997 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30C1646628ADB50A00923997 /* Localizable.strings */; };
+		30C1646928ADB52700923997 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C1646828ADB52700923997 /* Bindable.swift */; };
 		30C28B9D28A4FF24009CE751 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28B9C28A4FF24009CE751 /* HomeTableViewController.swift */; };
 		30C28BA028A50166009CE751 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28B9F28A50166009CE751 /* Users.swift */; };
 		30C28BA228A50370009CE751 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C28BA128A50370009CE751 /* Posts.swift */; };
@@ -52,6 +56,10 @@
 		07D03E3F1912927AD466BF81 /* Pods-LeagueMobileChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeagueMobileChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeagueMobileChallengeTests/Pods-LeagueMobileChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		09417A2435F74B6BBD872D0B /* Pods_LeagueMobileChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LeagueMobileChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B8BED4C0B2E47F947C8F53 /* Pods-LeagueMobileChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeagueMobileChallengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeagueMobileChallengeTests/Pods-LeagueMobileChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		30C1646228ADB4DB00923997 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		30C1646428ADB4E600923997 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		30C1646628ADB50A00923997 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		30C1646828ADB52700923997 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		30C28B9C28A4FF24009CE751 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		30C28B9F28A50166009CE751 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		30C28BA128A50370009CE751 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
@@ -148,6 +156,8 @@
 				B6AC694E21E6578D0094A9B1 /* AppDelegate.swift */,
 				B6AC695821E6578F0094A9B1 /* Assets.xcassets */,
 				30C28BB228A53307009CE751 /* Extensions */,
+				30C1646428ADB4E600923997 /* Localizable.swift */,
+				30C1646628ADB50A00923997 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -201,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				30C28BB328A5331B009CE751 /* UIViewController+Extensions.swift */,
+				30C1646228ADB4DB00923997 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				30C28BBA28A59057009CE751 /* Constants.swift */,
+				30C1646828ADB52700923997 /* Bindable.swift */,
 			);
 			path = Fundamentals;
 			sourceTree = "<group>";
@@ -404,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6AC695C21E6578F0094A9B1 /* LaunchScreen.storyboard in Resources */,
+				30C1646728ADB50A00923997 /* Localizable.strings in Resources */,
 				B6AC695921E6578F0094A9B1 /* Assets.xcassets in Resources */,
 				B6AC695421E6578D0094A9B1 /* Main.storyboard in Resources */,
 			);
@@ -533,7 +546,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C1646928ADB52700923997 /* Bindable.swift in Sources */,
 				30C28BA028A50166009CE751 /* Users.swift in Sources */,
+				30C1646328ADB4DB00923997 /* String+Extensions.swift in Sources */,
 				30C28BB828A5900E009CE751 /* APIEndpoint.swift in Sources */,
 				30C28B9D28A4FF24009CE751 /* HomeTableViewController.swift in Sources */,
 				30C28BAE28A5308E009CE751 /* HomeViewModel.swift in Sources */,
@@ -542,6 +557,7 @@
 				30C28BB428A5331B009CE751 /* UIViewController+Extensions.swift in Sources */,
 				B6AC69A221ECEC740094A9B1 /* APIController.swift in Sources */,
 				B6AC694F21E6578D0094A9B1 /* AppDelegate.swift in Sources */,
+				30C1646528ADB4E600923997 /* Localizable.swift in Sources */,
 				30C28BA428A5072E009CE751 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

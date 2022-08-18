@@ -20,12 +20,11 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         setupView()
+        setupObservers()
     }
 
     // MARK: - Table view data source
@@ -42,7 +41,7 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier,
-                                                       for: indexPath) as? PostTableViewCell else { fatalError(" Bad Cell - Could Not Cast! ") }
+                                                       for: indexPath) as? PostTableViewCell else { fatalError(.localized(.badCellCouldntCast)) }
         let post = posts[indexPath.row]
         guard let user = viewModel.filterUserById(id: post.userID) else { return cell }
         cell.configure(post, user)
@@ -55,7 +54,28 @@ extension HomeTableViewController {
     
     private func setupView() {
         
-        self.title = "Posts"
+        self.title = .localized(.homeTitle)
+    }
+    
+    private func setupObservers() {
+        
+        viewModel.posts.bind { [weak self] (_) in
+            if let posts = self?.viewModel.posts.value,
+               let users = self?.viewModel.users.value {
+                
+                self?.users = users
+                self?.posts = posts
+                self?.reloadTableViewData()
+            }
+        }
+        
+        viewModel.error.bind { [weak self] (_) in
+            if let error = self?.viewModel.error.value {
+                DispatchQueue.main.async {
+                    self?.alert(title: .localized(.oopsTitle), message: error.localizedDescription)
+                }
+            }
+        }
         
         setupData()
     }
@@ -73,22 +93,6 @@ extension HomeTableViewController {
         self.loadingIndicator.removeFromSuperview()
         DispatchQueue.main.async {
             self.tableView.reloadData()
-        }
-    }
-}
-
-// MARK: - ViewControllerViewModelDelegate
-
-extension HomeTableViewController: HomeViewModelDelegate {
-    func onSuccessFetchingWeather(users: Users, posts: Posts) {
-        self.users = users
-        self.posts = posts
-        self.reloadTableViewData()
-    }
-    
-    func onFailureFetchingWeather(error: Error) {
-        DispatchQueue.main.async {
-            self.alert(title: "Oops!", message: error.localizedDescription)
         }
     }
 }

@@ -8,18 +8,21 @@
 
 import Foundation
 
-protocol HomeViewModelDelegate: AnyObject {
-    func onSuccessFetchingWeather(users: Users, posts: Posts)
-    func onFailureFetchingWeather(error: Error)
+protocol HomeViewModelProtocol: AnyObject {
+    func fetchData()
+    
+    var users: Bindable<Users> { get set }
+    var posts: Bindable<Posts> { get set }
+    var error: Bindable<Error> { get set }
 }
 
-class HomeViewModel {
+class HomeViewModel: HomeViewModelProtocol {
     
     // MARK: - Private Properties
     let service: APIControllerProtocol
-    var delegate: HomeViewModelDelegate?
-    var users = Users()
-    var posts = Posts()
+    var users = Bindable<Users>()
+    var posts = Bindable<Posts>()
+    var error = Bindable<Error>()
     
     // MARK: - Inits
     
@@ -32,29 +35,28 @@ class HomeViewModel {
             if let error = error {
                 // PRINT ERROR
                 print(error)
-                self.delegate?.onFailureFetchingWeather(error: error)
+                self.error.value = error
                 return
             }
     
             self.service.fetchUsers { users, error in
                 if let error = error {
                     print(error)
-                    self.delegate?.onFailureFetchingWeather(error: error)
+                    self.error.value = error
                     return
                 }
                 
                 if let usersData = users {
-                    self.users = usersData
+                    self.users.value = usersData
                     
                     self.service.fetchPosts { postsData, error in
                         if let error = error {
                             print(error)
-                            self.delegate?.onFailureFetchingWeather(error: error)
+                            self.error.value = error
                             return
                         }
                         if let postsData = postsData {
-                            self.posts = postsData
-                            self.delegate?.onSuccessFetchingWeather(users: self.users, posts: self.posts)
+                            self.posts.value = postsData
                         }
                     }
                 }
@@ -66,6 +68,7 @@ class HomeViewModel {
 
 extension HomeViewModel {
     func filterUserById(id: Int) -> User? {
-        self.users.filter({ $0.id == id }).first
+        guard let users = self.users.value else { return nil }
+        return users.filter({ $0.id == id }).first
     }
 }

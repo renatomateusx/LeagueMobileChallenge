@@ -38,7 +38,7 @@ class LeagueMobileChallengeTests: XCTestCase {
     func testInitialState() {
         sleep(3)
         XCTAssertEqual(viewController.posts.count, 1)
-        XCTAssertEqual(viewController.title, "Posts")
+        XCTAssertEqual(viewController.title, .localized(.homeTitle))
         
         sleep(3)
         XCTAssertFalse(viewController.loadingIndicator.isAnimating)
